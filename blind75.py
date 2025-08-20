@@ -58,3 +58,13 @@ class Solution:
             diff = target - n
             if diff in seen and seen[diff] != i:
                 return [i, seen[diff]]
+#valid palindrome
+# Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+# A palindrome is a string that reads the same forward and backward.
+class Solution: #day 5
+    def isPalindrome(self, s: str) -> bool:
+        newStr = ""
+        for char in s:
+            if char.isalnum():
+                newStr += char.lower()
+        return newStr == newStr[::-1]
