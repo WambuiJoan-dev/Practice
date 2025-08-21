@@ -68,3 +68,20 @@ class Solution: #day 5
             if char.isalnum():
                 newStr += char.lower()
         return newStr == newStr[::-1]
+
+def isPalindrome(self, s:str) -> bool:
+    l, r = 0, len(s) - 1 #l starts at the beginning, r starts at the end. two pointers that move toward each other
+    while l < r: #keep checking as long as l left pointer is strictly before r right pointer
+        while l < r and not self.alphaNum(s[l]):
+            l += 1 #if l is not a no or letter move it forward l += 1
+        while l < r and not self.alphaNum(s[r]):
+            r -= 1 #if r is not a no or letter move it backward r-= 1
+        if s[l].lower() != s[r].lower(): #compare the charcters and convert to lowercase
+            return False #if they are different the string is not a palindrome
+        l, r = l + 1, r - 1 #move the pointers Toward each other; left forward and right backward. shrinking window continues until l>=r
+    return True #no matched characters found, so it is a palindrome
+#helper function to check if a character is alphanumeric
+def alphaNum(self, c):
+    return (ord('A') <= ord(c) <= ord('Z') or
+            ord('a') <= ord(c) <= ord('z') or
+            ord('0') <= ord(c) <= ord('9'))
