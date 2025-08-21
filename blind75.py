@@ -2,10 +2,10 @@
 # An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
 class Solution: #day 1
     def isAnagram(self, s: str, t:str) -> bool:
-        if len(s) != len(t):
-            return False
+        if len(s) != len(t):# checks if s and t have the same length
+            return False #false if they don't match
         
-        return sorted(s) == sorted(t)
+        return sorted(s) == sorted(t) #rearranges the characters in both strings and checks if they are equal. if equal yes its an anagram, otherswise return false
     
     def isAnagram2(self, s: str, t: str) -> bool:
         if len(s) != len(t):
