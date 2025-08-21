@@ -39,12 +39,12 @@ from typing import List #day 4
 #hash map solution(one pass)
 class Solution:
     def twoSum(self, nums: List[int], target:int) -> List[int]:
-        seen = {}
-        for i, num in enumerate(nums):
-            complement = target - num
-            if complement in seen:
+        seen = {} #stores nos we have seen and their indices
+        for i, num in enumerate(nums): # go thru each no and keep track of their index
+            complement = target - num # what we need to add to num to get to target
+            if complement in seen: # if we've already seen the complement then we've found the pair
                 return [seen[complement], i]
-            seen[num] = i
+            seen[num] = i #store current no and its indeex for future checks
 
 #hash map solution(two pass)
 class Solution:
