@@ -85,3 +85,24 @@ def alphaNum(self, c):
     return (ord('A') <= ord(c) <= ord('Z') or
             ord('a') <= ord(c) <= ord('z') or
             ord('0') <= ord(c) <= ord('9'))
+
+#Best time to buy and sell stock
+# You are given an array prices where prices[i] is the price of a given stock on the ith day.
+# You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+# Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+from typing import List
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        min_price = float('inf') #lowest price seen so far. Initialize to infinity so any price will be lower
+        max_profit = 0 #best profit found so far
+
+        for price in prices:
+            if price < min_price:
+                min_price = price #update min price if current price is lower
+            
+            current_profit = price - min_price #potential profit if we sold at current price
+            if current_profit > max_profit:
+                max_profit = current_profit #update max profit if current profit is higher
+        return max_profit
